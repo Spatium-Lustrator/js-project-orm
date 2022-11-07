@@ -1,6 +1,7 @@
 const express = require("express")
 const sequelize = require('./db')
 
+// db models
 const university_model = require('./models/university_model')
 const admin_model = require('./models/admin_model')
 const certificate_id_model = require('./models/certificate_id_model')
