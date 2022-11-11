@@ -16,7 +16,7 @@ const PORT = "5000"
 
 app.use(express.json())
 
-app.use('/save-university', university_router)
+app.use('/api', university_router, (req, res) => {})
 
 const start = async () => {
     try {
