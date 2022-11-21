@@ -21,6 +21,11 @@ const user_info = sequelize.define("users_info", {
     last_name: {
         type: DataTypes.STRING,
         allowNull: false
+    },
+
+    university : {
+        type: DataTypes.STRING,
+        allowNull: true
     }
 
 

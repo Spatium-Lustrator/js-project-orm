@@ -10,13 +10,15 @@ const user_info_model = require('./models/user_info_model')
 
 // routers
 const university_router = require('./routes/universtiy_routes')
+const user_info_router = require('./routes/user_info_routes')
 
 const app = express()
 const PORT = "5000"
 
 app.use(express.json())
 
-app.use('/api', university_router, (req, res) => {})
+app.use('/university', university_router, (req, res) => {})
+app.use('/user-info', user_info_router, (req, res) => {})
 
 const start = async () => {
     try {
