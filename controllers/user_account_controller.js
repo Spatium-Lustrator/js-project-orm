@@ -11,7 +11,7 @@ class UserAccountController {
             const id = req.body.id
             const login = req.body.login
             const password = req.body.password
-            const user_id = user_id
+            const user_id = req.body.user_id
 
             const user_account_entry = new user_account({
                 id: id,
