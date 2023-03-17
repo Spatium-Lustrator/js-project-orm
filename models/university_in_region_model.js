@@ -24,4 +24,4 @@ const universityInRegionModel = sequelize.define("university_in_region_model", {
     timestamps: false,
 });
 
-module.exports = user
+module.exports = universityInRegionModel
