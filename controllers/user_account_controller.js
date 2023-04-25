@@ -55,6 +55,18 @@ class UserAccountController {
 
     }
 
+    async get_user_info2(req, res) {
+
+        const id = req.body.id
+
+        user_account.findByPk(id).then(account =>{
+            if(!account) return;
+            console.log(account.login);
+            res.json(account)
+        }).catch(err=>console.log(err))      
+
+    }
+
 
 
 }
