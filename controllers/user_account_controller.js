@@ -1,4 +1,4 @@
-const user_account = require('../models/user_acount_model')
+const user_account = require('../models/user_account_model')
 const {Op} = require('sequelize')
 const user = require('../models/user_model')
 
@@ -13,7 +13,7 @@ class UserAccountController {
             const password = req.body.password
             const user_id = req.body.user_id
 
-            const user_account_entry = new user_account({
+            const user_account_entry = new user_account_info({
                 id: id,
                 password: password,
                 login: login,
@@ -42,6 +42,20 @@ class UserAccountController {
         res.json("[SUCCESS] USER INFO DELETED")
 
     }
+
+    async get_user_info(req, res) {
+
+        const id = req.body.id
+
+        user_account.find({where: {id: id}}).success(function(user_account_info) {
+            console.log(user_account_info) // Get user info and write it out
+        })
+
+        
+
+    }
+
+
 
 }
 

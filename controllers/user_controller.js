@@ -1,4 +1,5 @@
-const user_info = require('../models/user_model')
+const user = require('../models/user_model')
+const user_info = require('../models/user_info_model')
 const {Op} = require('sequelize')
 
 class UserController {
@@ -15,7 +16,7 @@ class UserController {
             const certificat = req.body.certificat
             const date_of_birthday = req.body.date_of_birthday
 
-            const user_info_entry = new  user_info({
+            const user_entry = new  user({
                 id: id,
                 first_name: first_name,
                 last_name: last_name,
@@ -26,7 +27,7 @@ class UserController {
                 }
             )
 
-            await user_info_entry.save()
+            await user_entry.save()
             res.json("[SUCCESS] USER INFO SAVED")
 
         } catch (e) {
@@ -45,6 +46,19 @@ class UserController {
         })
 
         res.json("[SUCCESS] USER INFO DELETED")
+
+    }
+
+    async get_user(req, res) {
+
+        const id = req.body.id
+
+        user.findByPk(id).then(user =>{
+            if(!user) return;
+            console.log(user.first_name);
+            res.json(user)
+        }).catch(err=>console.log(err))
+
 
     }
 
