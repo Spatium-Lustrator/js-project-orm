@@ -1,22 +1,24 @@
-const federal_disctrict = require("../models/federal_district_model")
+const region = require("../models/region_model")
 const {Op} = require("sequelize")
 
-class FederalDistrictController {
+class RegionController {
 
-    async save_federal_district(req, res) {
+    async save_region(req, res) {
         
         try {
 
             const id = req.body.id
             const name = req.body.name
+            const federal_district = req.body.federal_district
 
-            const federal_district_entry = new  federal_disctrict({
+            const region_entry = new  region({
                 id: id,
-                name: name
+                name: name,
+                federal_district: federal_district
                 }
             )
 
-            await federal_district_entry.save()
+            await region_entry.save()
             res.json("[SUCCESS] FEDERAL DISTRICT SAVED")
 
         } catch (e) {
@@ -26,11 +28,11 @@ class FederalDistrictController {
 
     }
 
-    async delete_federal_district(req, res) {
+    async delete_region(req, res) {
 
         const id = req.body.id
 
-        federal_disctrict.destroy({
+        region.destroy({
             where: {id: id}
         })
 
@@ -38,18 +40,19 @@ class FederalDistrictController {
 
     }
 
-    async get_federal_district(req, res) {
+    async get_region(req, res) {
 
         const id = req.body.id
 
-        federal_disctrict.findByPk(id).then(federal_disctrict_entry =>{
-            if(!federal_disctrict_entry) return;
-            res.json(federal_disctrict_entry)
+        region.findByPk(id).then(region_entry =>{
+            if(!region_entry) return;
+            res.json(region_entry)
         }).catch(err=>console.log(err))
 
 
     }
 
+
 }
 
-module.exports = new FederalDistrictController()
+module.exports = new RegionController()
