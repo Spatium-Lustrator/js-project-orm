@@ -41,7 +41,7 @@ class UserController {
 
         const id = req.body.id
 
-        user_info.destroy({
+        user.destroy({
             where: {id: id}
         })
 
