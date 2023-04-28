@@ -4,5 +4,6 @@ const userInfoController = require('../controllers/user_controller')
 
 router.post("/user-info-save", userInfoController.save_user_info)
 router.delete("/user-info-delete", userInfoController.delete_user_info)
+router.get('/user-info-get', userInfoController.get_user)
 
 module.exports = router
